@@ -31,8 +31,9 @@ _Note_: In current form, after deployment, your API is public and can be invoked
 
 El entorno de desarrollo local lo podemos usar con el comando
 
+    - serverless offline start
 ```
-serverless offline start
 ```
+
 
 
