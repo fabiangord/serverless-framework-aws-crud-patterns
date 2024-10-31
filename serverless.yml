@@ -1,0 +1,81 @@
+service: crud-simple-serverless
+frameworkVersion: "4"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  iam: 
+    role:
+      statements:
+        - Effect: Allow
+          Action: 'dynamodb:*'
+          Resource: arn:aws:dynamodb:us-east-1:381491895266:table/usersTable
+
+plugins:
+  - serverless-offline
+  - serverless-dynamodb-local
+
+custom:
+  serverless-dynamodb:
+    stages:
+      - dev
+    start:
+      docker: true
+      port: 8000
+      inMemory: true
+      sharedDb: true
+
+functions:
+  getUser:
+    handler: src/handlers/user.getUserHandler
+    events:
+      - httpApi:
+          path: /users/get/{id}
+          method: get
+  getUsers:
+    handler: src/handlers/user.getUsersHandler
+    events:
+      - httpApi:
+          path: /users/get-users
+          method: get
+  createUser:
+    handler: src/handlers/user.createUsersHandler
+    events:
+      - httpApi:
+          path: /users/create
+          method: post
+  updateUser:
+    handler: src/handlers/user.updateUsersHandler
+    events:
+      - httpApi:
+          path: /users/update/{id}
+          method: patch
+  deleteUser:
+    handler: src/handlers/user.deleteUsersHandler
+    events:
+      - httpApi:
+          path: /users/delete/{id}
+          method: delete
+      
+
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: usersTable
+        AttributeDefinitions:
+          - AttributeName: pk
+            AttributeType: S
+        KeySchema:
+          - AttributeName: pk
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+package:
+  individually: true
+  patterns:
+    - "!.dynamodb"
+    - "!node_modules"
