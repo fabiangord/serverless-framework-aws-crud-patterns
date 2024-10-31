@@ -34,24 +34,32 @@ functions:
           method: get
   getUsers:
     handler: src/handlers/user.getUsersHandler
+    patterns:
+    - "src/handlers/user.js"
     events:
       - httpApi:
           path: /users/get-users
           method: get
   createUser:
     handler: src/handlers/user.createUsersHandler
+    patterns:
+    - "src/handlers/user.js"
     events:
       - httpApi:
           path: /users/create
           method: post
   updateUser:
     handler: src/handlers/user.updateUsersHandler
+    patterns:
+    - "src/handlers/user.js"
     events:
       - httpApi:
           path: /users/update/{id}
           method: patch
   deleteUser:
     handler: src/handlers/user.deleteUsersHandler
+    patterns:
+    - "src/handlers/user.js"
     events:
       - httpApi:
           path: /users/delete/{id}
@@ -77,6 +85,6 @@ resources:
 package:
   individually: true
   patterns:
-    - "./src/handlers/user.js"
-    - "!./*/**"
-    - "!./**"
+    - "src/handlers/user.js"
+    - "!*/**"
+    - "!**"
