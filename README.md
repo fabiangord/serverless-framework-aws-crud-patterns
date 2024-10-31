@@ -33,7 +33,6 @@ El entorno de desarrollo local lo podemos usar con el comando
 
     - serverless offline start
 ```
-```
 
 
 
