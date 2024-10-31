@@ -27,56 +27,31 @@ custom:
 
 functions:
   getUser:
-    handler: src/handlers/user.getUserHandler
-    package:
-      individually: true
-      patterns:
-        - "!*/**"
-        - "!**"
+    handler: src/handlers/user.getUserHandler    
     events:
       - httpApi:
           path: /users/get/{id}
           method: get
   getUsers:
     handler: src/handlers/user.getUsersHandler
-    package:
-      individually: true
-      patterns:
-        - "!*/**"
-        - "!**"
     events:
       - httpApi:
           path: /users/get-users
           method: get
   createUser:
     handler: src/handlers/user.createUsersHandler
-    package:
-      individually: true
-      patterns:
-        - "!*/**"
-        - "!**"
     events:
       - httpApi:
           path: /users/create
           method: post
   updateUser:
     handler: src/handlers/user.updateUsersHandler
-    package:
-      individually: true
-      patterns:
-        - "!*/**"
-        - "!**"
     events:
       - httpApi:
           path: /users/update/{id}
           method: patch
   deleteUser:
     handler: src/handlers/user.deleteUsersHandler
-    package:
-      individually: true
-      patterns:
-        - "!*/**"
-        - "!**"
     events:
       - httpApi:
           path: /users/delete/{id}
@@ -102,5 +77,6 @@ resources:
 package:
   individually: true
   patterns:
+    - "src/handlers/user.js"
     - "!*/**"
     - "!**"
