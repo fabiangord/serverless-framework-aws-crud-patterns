@@ -89,10 +89,6 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
 
-package:
-  patterns:
-    - "!*/**"
-    - "!**"
 
 plugins:
   - serverless-offline
