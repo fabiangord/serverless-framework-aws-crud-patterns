@@ -11,10 +11,6 @@ provider:
           Action: 'dynamodb:*'
           Resource: arn:aws:dynamodb:us-east-1:381491895266:table/usersTable
 
-plugins:
-  - serverless-offline
-  - serverless-dynamodb-local
-
 custom:
   serverless-dynamodb:
     stages:
@@ -27,43 +23,54 @@ custom:
 
 functions:
   getUser:
-    handler: src/handlers/user.getUserHandler  
+    handler: src/users/getUser/handler.getUserHandler  
     events:
       - httpApi:
           path: /users/get/{id}
           method: get
+    package:
+      patterns:
+        - "src/users/getUser/handler.js"
+
   getUsers:
-    handler: src/handlers/user.getUsersHandler
-    patterns:
-    - "src/handlers/user.js"
+    handler: src/users/getUsers/handler.getUsersHandler
     events:
       - httpApi:
           path: /users/get-users
           method: get
+    package:
+      patterns:
+        - "src/users/getUsers/handler.js"
+
   createUser:
-    handler: src/handlers/user.createUsersHandler
-    patterns:
-    - "src/handlers/user.js"
+    handler: src/users/createUsers/handler.createUsersHandler
     events:
       - httpApi:
           path: /users/create
           method: post
+    package:
+      patterns:
+        - "src/users/createUsers/handler.js"
+
   updateUser:
-    handler: src/handlers/user.updateUsersHandler
-    patterns:
-    - "src/handlers/user.js"
+    handler: src/users/updateUsers/handler.updateUsersHandler
     events:
       - httpApi:
           path: /users/update/{id}
           method: patch
+    package:
+      patterns:
+        - "src/users/updateUsers/handler.js"
+
   deleteUser:
-    handler: src/handlers/user.deleteUsersHandler
-    patterns:
-    - "src/handlers/user.js"
+    handler: src/users/deleteUsers/handler.deleteUsersHandler
     events:
       - httpApi:
           path: /users/delete/{id}
           method: delete
+    package:
+      patterns:
+        - "src/users/deleteUsers/handler."
       
 
 resources:
@@ -85,4 +92,8 @@ resources:
 package:
   individually: true
   patterns:
-    - "src/handlers/user.js"
+    - "!*/**"
+    - "!**"
+
+plugins:
+  - serverless-offline

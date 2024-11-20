@@ -4,10 +4,11 @@
         "test": "echo \"Error : no test specified\""
     },
     "devDependencies": {
+        "madge": "^8.0.0",
         "serverless": "^4.4.7",
         "serverless-offline": "^14.3.3"
     },
     "dependencies": {
-        "serverless-dynamodb-local": "^0.2.10"
+        "@aws-sdk/client-dynamodb": "^3.687.0"
     }
 }
