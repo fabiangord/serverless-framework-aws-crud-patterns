@@ -3,6 +3,8 @@
 
 Este es un CRUD aplicando patrones de diseño y abstracción, se usan buenas practicas para la integración, realizado con JavaScript, es en serverless framework recuerda conectarla con tus datos de AWS y hacer el deploy
 
+También tenemos adaptada una automatización con github actions
+
 ## Usage
 
 ### Deployment

@@ -2,5 +2,13 @@
     "type": "module",
     "scripts": {
         "test": "echo \"Error : no test specified\""
+    },
+    "devDependencies": {
+        "madge": "^8.0.0",
+        "serverless": "^4.4.7",
+        "serverless-offline": "^14.3.3"
+    },
+    "dependencies": {
+        "@aws-sdk/client-dynamodb": "^3.687.0"
     }
 }
