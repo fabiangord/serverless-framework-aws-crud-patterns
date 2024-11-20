@@ -70,7 +70,7 @@ functions:
           method: delete
     package:
       patterns:
-        - "src/users/deleteUsers/handler."
+        - "src/users/deleteUsers/handler.js"
       
 
 resources:
@@ -90,10 +90,8 @@ resources:
           WriteCapacityUnits: 1
 
 package:
-  individually: true
   patterns:
     - "!*/**"
-    - "!**"
 
 plugins:
   - serverless-offline
