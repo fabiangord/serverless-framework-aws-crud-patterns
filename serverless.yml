@@ -90,7 +90,6 @@ resources:
           WriteCapacityUnits: 1
 
 package:
-  individually: true
   patterns:
     - "!*/**"
     - "!**"
